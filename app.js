@@ -3,6 +3,7 @@ const db = require('./models');
 const taskRoutes = require('./routes/taskRoutes');
 const authRoutes = require('./routes/authRoutes');
 const notificationRoutes = require('./routes/notificationRoutes');
+const setupSwagger = require('./config/swagger');
 
 const app = express();
 
@@ -11,6 +12,8 @@ app.use(express.json());
 app.use('/tasks', taskRoutes);
 app.use('/auth', authRoutes);
 app.use('/notifications', notificationRoutes);
+
+setupSwagger(app);
 
 db.sequelize.sync().then(() => {
   console.log('Database synchronized');

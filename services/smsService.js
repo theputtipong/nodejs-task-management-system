@@ -1,15 +1,24 @@
-const twilio = require('twilio');
+require('dotenv').config();
+const Vonage = require('@vonage/server-sdk')
 
-const accountSid = 'your_account_sid';
-const authToken = 'your_auth_token';
-const client = new twilio(accountSid, authToken);
+const vonage = new Vonage({
+  apiKey: process.env.VONAGE_API_KEY,
+  apiSecret: process.env.VONAGE_API_SECRET
+});
 
-const sendSms = async (to, message) => {
-    await client.messages.create({
-        body: message,
-        to: to,
-        from: 'your_twilio_number'
-    });
+const sendSMS = (to, text) => {
+  const from = 'YourBrand';
+  vonage.message.sendSms(from, to, text, (err, responseData) => {
+    if (err) {
+      console.error('Error:', err);
+    } else {
+      if (responseData.messages[0].status === '0') {
+        console.log('Message sent successfully.');
+      } else {
+        console.log(`Message failed with error: ${responseData.messages[0]['error-text']}`);
+      }
+    }
+  });
 };
 
-module.exports = { sendSms };
+module.exports = { sendSMS };

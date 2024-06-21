@@ -17,7 +17,7 @@ const sendSmsNotification = async (req, res) => {
     const { to, message } = req.body;
 
     try {
-        await smsService.sendSms(to, message);
+        smsService.sendSMS(to, message);
         res.status(200).json({ message: 'SMS sent successfully' });
     } catch (error) {
         res.status(500).json({ error: error.message });

@@ -1,4 +1,4 @@
-node-task-mgmt-system/
+task-mgmt-system/
 ├── config/
 │   └── config.json
 ├── controllers/

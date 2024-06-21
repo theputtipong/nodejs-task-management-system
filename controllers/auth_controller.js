@@ -2,7 +2,6 @@ const db = require("../models/index_model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-// Function for registering a new user
 const registerUser = async (req, res) => {
   const { username, password, role } = req.body;
 
@@ -19,7 +18,6 @@ const registerUser = async (req, res) => {
   }
 };
 
-// Function for logging in an existing user
 const loginUser = async (req, res) => {
   const { username, password } = req.body;
 
@@ -42,4 +40,15 @@ const loginUser = async (req, res) => {
   }
 };
 
-module.exports = { registerUser, loginUser };
+const logoutUser = async (req, res) => {
+  const token = req.header("Authorization")?.replace("Bearer ", "");
+
+  try {
+    await db.TokenBlacklist.create({ token });
+    res.status(200).json({ message: "Logged out successfully" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+module.exports = { registerUser, loginUser, logoutUser };

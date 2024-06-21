@@ -3,10 +3,29 @@ version: '3.4'
 services:
   nodejstaskmgmtsystem:
     image: nodejstaskmgmtsystem
+    container_name: task-mgmt-system-nodejs
     build:
       context: .
       dockerfile: ./Dockerfile
     environment:
       NODE_ENV: production
     ports:
-      - 3000:3000
+      - "3000:3000"
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres
+    container_name: db-postgres
+    shm_size: 128mb
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres_password
+      POSTGRES_USER: postgres_user
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

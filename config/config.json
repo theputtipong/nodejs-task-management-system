@@ -1,8 +1,8 @@
 {
     "development": {
-      "username": "postgres_user",
+      "username": "postgres",
       "password": "postgres_password",
-      "database": "task_management_db",
+      "database": "task_mgmt_db",
       "host": "127.0.0.1",
       "dialect": "postgres"
     }

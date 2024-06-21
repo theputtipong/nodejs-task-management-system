@@ -3,7 +3,7 @@ const db = require("./models/index_model");
 const taskRoutes = require("./routes/task_routes");
 const authRoutes = require("./routes/auth_routes");
 const notificationRoutes = require("./routes/notification_routes");
-const authMiddleware = require("./middleware/auth_middleware");
+const authMiddleware = require("./middlewares/auth_middleware");
 const setupSwagger = require("./config/swagger");
 
 const app = express();

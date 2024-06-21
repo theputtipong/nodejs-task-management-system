@@ -1,6 +1,29 @@
 version: '3.4'
 
 services:
+  postgres:
+    image: postgres
+    container_name: db-postgres
+    environment:
+      POSTGRES_DB: task_mgmt_db
+      POSTGRESQL_USERNAME: admin
+      POSTGRESQL_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: dpage-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: password
+    ports:
+      - "8080:80"
+    depends_on:
+      - postgres
+
   nodejstaskmgmtsystem:
     image: task_mgmt_system
     container_name: task-mgmt-system-nodejs
@@ -11,26 +34,6 @@ services:
       NODE_ENV: production
     ports:
       - "3000:3000"
-    depends_on:
-      - postgres
-
-  postgres:
-    image: postgres
-    container_name: db-postgres
-    env_file:
-      - .env
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-
-  pgadmin:
-    image: pgadmin4
-    container_name: pgadmin
-    env_file:
-      - .env
-    ports:
-      - "8080:80"
     depends_on:
       - postgres
 

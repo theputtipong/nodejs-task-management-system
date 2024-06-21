@@ -1,4 +1,4 @@
-const db = require('../models');
+const db = require('../models/index_model');
 
 const createTask = async (req, res) => {
   try {

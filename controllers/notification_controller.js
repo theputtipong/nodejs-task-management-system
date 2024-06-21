@@ -1,6 +1,6 @@
-const emailService = require('../services/emailService');
-const smsService = require('../services/smsService');
-const pushService = require('../services/pushService');
+const emailService = require('../services/email_service');
+const smsService = require('../services/sms_service');
+const pushService = require('../services/push_service');
 
 const sendEmailNotification = async (req, res) => {
     const { to, subject, body } = req.body;

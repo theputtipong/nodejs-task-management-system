@@ -1,8 +1,8 @@
 const express = require('express');
-const db = require('./models');
-const taskRoutes = require('./routes/taskRoutes');
-const authRoutes = require('./routes/authRoutes');
-const notificationRoutes = require('./routes/notificationRoutes');
+const db = require('./models/index_model');
+const taskRoutes = require('./routes/task_routes');
+const authRoutes = require('./routes/auth_routes');
+const notificationRoutes = require('./routes/notification_routes');
 const setupSwagger = require('./config/swagger');
 
 const app = express();

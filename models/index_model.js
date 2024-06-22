@@ -1,16 +1,14 @@
 const Sequelize = require("sequelize");
-const config = require("./config.js");
-const sequelize = new Sequelize(
-  config.development.database,
-  config.development.username,
-  config.development.password,
-  {
-    host: config.development.host,
-    dialect: config.development.dialect,
-    port: config.development.port,
-    logging: false, // Set to true if you want to see SQL queries
-  }
-);
+require("dotenv").config();
+
+const sequelize = new Sequelize({
+  database: process.env.POSTGRES_DB,
+  username: process.env.POSTGRES_USER,
+  password: process.env.POSTGRES_PASSWORD,
+  host: process.env.POSTGRES_HOST,
+  dialect: process.env.POSTGRES_DIALECT,
+  port: process.env.POSTGRES_PORT,
+});
 
 const db = {};
 

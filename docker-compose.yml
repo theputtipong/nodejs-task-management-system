@@ -1,4 +1,4 @@
-version: '3.4'
+version: "3.4"
 
 services:
   postgres:
@@ -25,7 +25,7 @@ services:
       - postgres
 
   taskmgmtsystem:
-    image: task_mgmt_system
+    image: taskmgmtsystem
     container_name: task-mgmt-system
     build:
       context: .

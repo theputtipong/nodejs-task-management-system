@@ -5,9 +5,9 @@ services:
     image: postgres
     container_name: db-postgres
     environment:
-      POSTGRES_DB: task_mgmt_db
-      POSTGRESQL_USERNAME: admin
-      POSTGRESQL_PASSWORD: password
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     ports:
       - "5432:5432"
     volumes:
@@ -17,8 +17,8 @@ services:
     image: dpage/pgadmin4
     container_name: dpage-pgadmin
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: password
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
     ports:
       - "8080:80"
     depends_on:
@@ -31,7 +31,7 @@ services:
       context: .
       dockerfile: ./Dockerfile
     environment:
-      NODE_ENV: production
+      NODE_ENV: ${NODE_ENV}
     ports:
       - "3000:3000"
     depends_on:

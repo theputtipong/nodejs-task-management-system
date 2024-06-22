@@ -24,9 +24,9 @@ services:
     depends_on:
       - postgres
 
-  nodejstaskmgmtsystem:
+  taskmgmtsystem:
     image: task_mgmt_system
-    container_name: task-mgmt-system-nodejs
+    container_name: task-mgmt-system
     build:
       context: .
       dockerfile: ./Dockerfile

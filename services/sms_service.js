@@ -1,5 +1,5 @@
-require("dotenv").config();
 const { Vonage } = require("@vonage/server-sdk");
+require("dotenv").config();
 
 const vonage = new Vonage({
   apiKey: process.env.VONAGE_API_KEY,

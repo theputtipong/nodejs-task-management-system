@@ -20,8 +20,8 @@ const corsOptions = {
       callback(new Error("Not allowed by CORS"));
     }
   },
-  methods: ["GET", "POST", "PUT", "DELETE"], // ระบุ HTTP methods ที่อนุญาต
-  allowedHeaders: ["Content-Type", "Authorization"], // ระบุ header ที่อนุญาต
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
 };
 app.use(cors(corsOptions));
 

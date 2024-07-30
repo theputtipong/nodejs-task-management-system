@@ -1,9 +1,16 @@
 const axios = require("axios");
 
 const url =
-  "http://192.168.11.126:8000/api/v1/choices/?model_name=locations&facility=120&tool=Work%20Request";
-const interval = 1; // Time in milliseconds between requests (1 second)
-const concurrentTasks = 1;
+  "http://192.168.11.126:8000/api/v1/locations/hierarchy/?all=true&facility=2";
+// "https://fm-dev.sitearound.com/api/v1/locations/hierarchy/?all=true&facility=2";
+
+const frontUrl = "http://192.168.11.126:3000";
+// "https://fm-dev.sitearound.com";
+
+const token = "IlXTGV1OXhS3cMek33DzWFrKfYqGdu";
+
+const interval = 100000; // Time in milliseconds between requests (1 second)
+const concurrentTasks = 1000;
 
 async function makeRequest(taskId) {
   try {
@@ -17,10 +24,10 @@ async function makeRequest(taskId) {
       headers: {
         Accept: "application/json, text/plain, */*",
         "Accept-Language": "th,en-US;q=0.9,en;q=0.8",
-        Authorization: "Bearer lb0Mpm1iDZokzhgSNZv2XXQoendsIB",
+        Authorization: `Bearer ${token}`,
         Connection: "keep-alive",
-        Origin: `${url}:3000`,
-        Referer: `${url}:3000/`,
+        Origin: `${frontUrl}`,
+        Referer: `${frontUrl}/`,
         "Sec-Fetch-Dest": "empty",
         "Sec-Fetch-Mode": "cors",
         "Sec-Fetch-Site": "same-site",
@@ -33,7 +40,11 @@ async function makeRequest(taskId) {
       },
     };
     const response = axios.request(config);
-    console.log(`Task ${taskId}: Response:`, response.data);
+    // console.log(`Task ${taskId}: Response:`, response.data);
+    console.log(
+      `Task ${taskId}: Response:`,
+      `Time: ${new Date().toLocaleTimeString()}`
+    );
   } catch (error) {
     console.error(`Task ${taskId}: Error:`, error.message);
   }

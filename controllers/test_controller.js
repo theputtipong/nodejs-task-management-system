@@ -7,10 +7,10 @@ const url =
 const frontUrl = "http://192.168.11.126:3000";
 // "https://fm-dev.sitearound.com";
 
-const token = "IlXTGV1OXhS3cMek33DzWFrKfYqGdu";
+const token = "vmH8zL2XZ2mQh1Vn6GSL18TIp5ut1j";
 
-const interval = 100000; // Time in milliseconds between requests (1 second)
-const concurrentTasks = 1000;
+const interval = 60; // Time in milliseconds between requests (1 second)
+const concurrentTasks = 10;
 
 async function makeRequest(taskId) {
   try {

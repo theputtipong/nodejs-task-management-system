@@ -1,13 +1,10 @@
 const axios = require("axios");
 
-const url =
-  "http://192.168.11.126:8000/api/v1/locations/hierarchy/?all=true&facility=2";
-// "https://fm-dev.sitearound.com/api/v1/locations/hierarchy/?all=true&facility=2";
+const url = "";
 
-const frontUrl = "http://192.168.11.126:3000";
-// "https://fm-dev.sitearound.com";
+const frontUrl = "";
 
-const token = "vmH8zL2XZ2mQh1Vn6GSL18TIp5ut1j";
+const token = "";
 
 const interval = 60; // Time in milliseconds between requests (1 second)
 const concurrentTasks = 10;

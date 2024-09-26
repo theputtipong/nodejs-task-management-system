@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const db = require("./models/index_model");
+// const db = require("./models/index_model");
 const taskRoutes = require("./routes/task_routes");
 const authRoutes = require("./routes/auth_routes");
 const notificationRoutes = require("./routes/notification_routes");
@@ -29,10 +29,14 @@ app.use("/tasks", taskRoutes);
 app.use("/auth", authRoutes);
 app.use("/notifications", notificationRoutes);
 
+app.get("/", (req, res) => {
+  res.send("we recived a get request");
+});
+
 setupSwagger(app);
 
-db.sequelize.sync().then(() => {
-  console.log("Database synchronized");
-});
+// db.sequelize.sync().then(() => {
+//   console.log("Database synchronized");
+// });
 
 module.exports = app;
